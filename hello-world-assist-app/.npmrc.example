@@ -1,0 +1,13 @@
+# Copy this file to `.npmrc` and fill in your own Trimble Artifactory token.
+# `.npmrc` is gitignored so the real token is never committed.
+#
+# How to get the token:
+#   1. Log in to https://artifactory.trimble.tools
+#   2. Artifacts -> repo `trimble-agentic-external-npm-local` -> "Set Me Up" (npm)
+#      OR  avatar -> Edit Profile -> Generate an Identity Token
+#   3. Paste the token below in place of YOUR_AUTH_TOKEN.
+
+@trimble-agentic-external-npm-local:registry=https://artifactory.trimble.tools/artifactory/api/npm/trimble-agentic-external-npm-local/
+//artifactory.trimble.tools/artifactory/api/npm/trimble-agentic-external-npm-local/:_authToken=YOUR_AUTH_TOKEN
+//artifactory.trimble.tools/artifactory/api/npm/trimble-agentic-external-npm-local/:email=YOUR_TRIMBLE_EMAIL
+//artifactory.trimble.tools/artifactory/api/npm/trimble-agentic-external-npm-local/:always-auth=true
