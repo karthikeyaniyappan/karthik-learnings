@@ -1,0 +1,35 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.app__header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e5e4e7;
+  flex: 0 0 auto;
+}
+
+.app__header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.app__header p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.app__chat {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.assist-chat {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
