@@ -32,13 +32,28 @@ using the official React wrapper
    npm install
    ```
 
-3. **(Optional) Configure runtime credentials.** Copy the env example and fill in a
-   token for an authenticated conversation:
+3. **Configure authentication.** Copy the env example and add your Trimble
+   Identity credentials:
 
    ```bash
    cp .env.example .env
-   # set VITE_TRIMBLE_ACCESS_TOKEN=...
+   # set TRIMBLE_CLIENT_ID, TRIMBLE_CLIENT_SECRET, TRIMBLE_CLIENT_NAME
    ```
+
+   How auth works: the dev server includes a small **token proxy** (in
+   `vite.config.ts`). It reads these `TRIMBLE_*` values on the Node side, performs
+   the OAuth 2.0 client-credentials exchange against
+   `https://id.trimble.com/oauth/token`, and exposes the resulting token at
+   `GET /api/token`. The browser code (`src/assist/provideToken.ts`) just fetches
+   that endpoint, so **the client secret never reaches the browser**. `.env` is
+   gitignored.
+
+   - `TRIMBLE_CLIENT_NAME` is used as the OAuth `scope` (it's your registered
+     Client *name*, not the id).
+   - For a one-off test you can instead set `VITE_TRIMBLE_ACCESS_TOKEN` to a token
+     you already minted; `provideToken` will use it and skip the proxy.
+   - This proxy is for local dev only (`npm run dev`). A real deployment needs its
+     own server-side token endpoint.
 
 ## Run
 
